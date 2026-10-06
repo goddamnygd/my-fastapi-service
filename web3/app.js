@@ -57,9 +57,7 @@ async function loadCharacters() {
         }
 
         const data = await response.json();
-
         characters = data.characters || [];
-
         if (characters.length === 0) {
             throw new Error(
                 "No characters returned by API."
@@ -67,17 +65,13 @@ async function loadCharacters() {
         }
 
         configureMode();
-
         fillCharacterNames();
-
         startRound();
     }
 
     catch (error) {
         console.error(error);
-
         guessInput.placeholder = "API COULD NOT BE LOADED";
-
         guessInput.disabled = true;
     }
 }
@@ -91,9 +85,7 @@ function configureMode() {
             );
 
         modeEyebrow.textContent = "SURVIVOR ONLY";
-
         gameModeTitle.textContent = "SURVIVOR MODE";
-
         modeDescription.textContent = "Only Survivors can be the hidden answer.";
     }
 
@@ -105,21 +97,15 @@ function configureMode() {
             );
 
         modeEyebrow.textContent = "KILLER ONLY";
-
         gameModeTitle.textContent = "KILLER MODE";
-
         modeDescription.textContent = "Only Killers can be the hidden answer.";
     }
 
     else {
         selectedMode = "mixed";
-
         activeCharacters = [...characters];
-
         modeEyebrow.textContent = "SURVIVORS + KILLERS";
-
         gameModeTitle.textContent = "MIXED MODE";
-
         modeDescription.textContent = "Survivors and Killers are both included.";
     }
 }
@@ -129,9 +115,7 @@ function fillCharacterNames() {
 
     activeCharacters.forEach(character => {
         const option = document.createElement("option");
-
         option.value = character.name;
-
         datalist.appendChild(option);
     });
 }
@@ -406,9 +390,7 @@ function compareText(
 ) {
     return normalize(guess)
         === normalize(target)
-
         ? "correct"
-
         : "wrong";
 }
 
